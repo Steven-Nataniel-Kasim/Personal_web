@@ -2,6 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState, type CSSProperties } from "react";
 import { mapNodes, nowItems, projects, timeline, toolGroups } from "@/data/portfolio";
+import { IntelligenceCore } from "@/components/IntelligenceCore";
 
 const progression = ["Software", "AI models", "Edge computing", "Computer architecture", "Silicon", "Biological intelligence"];
 
@@ -84,7 +85,12 @@ export default function Home() {
     <div className={`boot ${booted ? "done" : ""}`} aria-hidden={booted}><div><span className="mono">BOOTING STEVEN.OS</span><i><b /></i><em className="mono">100%</em></div></div>
     <main>
       <header className="site-header"><a className="wordmark" href="#top" aria-label="Steven, home">S.</a><nav aria-label="Primary navigation"><a href="#work">Work</a><a href="#map">Map</a><a href="#about">About</a><a href="#contact">Contact</a></nav><span className="status">SYSTEM / LEARNING</span></header>
-      <section className="hero" id="top"><div className="hero-grid" aria-hidden="true" /><ParticleField /><div className="hero-kicker mono">INFORMATICS / AI SYSTEMS / 0x01</div><div className="hero-copy"><h1>STEVEN</h1><p className="hero-thesis">Building intelligence<br />from software to silicon.</p></div><div className="portrait-stage" role="img" aria-label="Reserved space for Steven's portrait"><div className="portrait-scan" /><span className="portrait-index mono">PORTRAIT_01</span><span className="portrait-note mono">IMAGE SLOT / REPLACE WITH STEVEN.JPG</span><div className="portrait-core"><span>S</span></div></div><p className="hero-intro">Informatics student exploring artificial intelligence, edge computing, computer architecture, semiconductor technology, and the systems that may shape the next generation of intelligence.</p><a className="scroll-cue mono" href="#manifesto">SCROLL TO DESCEND <span>↓</span></a></section>
+      <section className="hero" id="top">
+        <div className="hero-kicker mono"><span className="live-dot" /> AN INDEPENDENT EXPLORATION OF INTELLIGENCE</div>
+        <div className="hero-copy"><p className="hero-overline">Steven / Informatics student</p><h1>Software.<br /><span>Silicon.</span><br /><em>Something more.</em></h1><p className="hero-thesis">Building intelligence from the ground up.</p><a className="hero-action" href="#work">Explore my experiments <span>↗</span></a></div>
+        <div className="core-stage"><IntelligenceCore /><span className="core-label mono">FIG. 001 — EMERGENT INTELLIGENCE</span><span className="core-coordinate mono">ALGORITHMS ↔ ARCHITECTURE</span><div className="core-cross cross-one">+</div><div className="core-cross cross-two">+</div></div>
+        <div className="hero-bottom"><p>AI & machine learning<br />Hardware & architecture<br />Biological intelligence</p><span className="mono">A WORK IN PROGRESS.<br />BY DESIGN.</span><a className="scroll-cue mono" href="#manifesto">ENTER THE SYSTEM <span>↓</span></a></div>
+      </section>
 
       <section className="manifesto" id="manifesto"><Reveal><p className="section-index mono">01 / DIRECTION</p><h2>I don&apos;t only want to <em>use</em> intelligence.<br />I want to understand how to <em>build</em> it.</h2></Reveal><div className="progression">{progression.map((item, index) => <Reveal className="progression-reveal" key={item}><div className="progression-row"><span className="mono">0{index + 1}</span><strong>{item}</strong>{index < progression.length - 1 && <span className="arrow" aria-hidden="true">↓</span>}</div></Reveal>)}</div></section>
 
