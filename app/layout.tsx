@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./redesign.css";
+import "./lab.css";
 
 export const metadata: Metadata = {
   title: "Steven — AI × Silicon",
