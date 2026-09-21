@@ -6,7 +6,7 @@ export const projects = [
     notes: "Focus: model efficiency, deployment constraints, and a credible path from research code to edge inference.",
   },
   {
-    number: "02", title: "8-BIT FPGA CPU", category: "Digital Architecture / FPGA", year: "2026", status: "BUILDING",
+    number: "02", title: "8-BIT FPGA CPU", category: "Digital Architecture / FPGA", year: "2026", status: "COMPLETED",
     description: "A custom Harvard architecture 8-bit CPU implemented on FPGA with an ALU, control unit, registers, instruction memory, flags, and display interfaces.",
     tags: ["Verilog / VHDL", "FPGA", "Computer Architecture", "Digital Logic", "Xilinx"],
     notes: "Architecture: separate instruction and data paths, a compact instruction set, and visible hardware state for testing.",
@@ -29,7 +29,7 @@ export const nowItems = ["NPU architectures", "FPGA acceleration", "Edge AI opti
 
 export const timeline = [
   ["2025", "Started deeper exploration into AI", "past"], ["2026", "Edge AI experiments", "present"],
-  ["2026", "Medical computer vision research", "present"], ["2026", "FPGA computer architecture", "present"],
+  ["2026", "Medical computer vision research", "present"], ["2026", "Completed 8-bit FPGA CPU", "completed"],
   ["2026", "Bio-inspired computing exploration", "present"], ["NEXT", "NPU architecture", "next"], ["FUTURE", "AI silicon research", "future"],
 ] as const;
 

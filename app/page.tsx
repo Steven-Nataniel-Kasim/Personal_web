@@ -11,7 +11,7 @@ const terminalResponses: Record<string, string[]> = {
   about: ["STEVEN / INFORMATICS STUDENT", "Building systems while learning how intelligence moves from algorithms into hardware."],
   skills: ["BUILDING WITH", "Python · PyTorch · TensorFlow · ONNX · OpenCV · Git", "HARDWARE", "FPGA · Digital Logic · Jetson Nano"],
   research: ["CURRENT RESEARCH INTERESTS", "01 Edge AI", "02 Efficient neural networks", "03 FPGA-based acceleration", "04 NPU architecture", "05 Neuromorphic computing", "06 Computational neuroscience"],
-  projects: ["ACTIVE INDEX", "01 Retinal Edge AI", "02 8-bit FPGA CPU", "03 Bio-inspired Neural Controller", "04 NPU Exploration"],
+  projects: ["PROJECT INDEX", ...projects.map((project) => `${project.number} ${project.title} / ${project.status}`)],
   hardware: ["HARDWARE PATH", "Digital logic → FPGA → computer architecture → NPU → silicon"],
   ai: ["AI PATH", "Computer vision · efficient models · edge inference · agents"],
   semiconductor: ["SEMICONDUCTOR", "A long-term direction. Learning the fundamentals before making claims."],
@@ -55,12 +55,15 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 
 function Terminal({ onGame }: { onGame: () => void }) {
   const [history, setHistory] = useState<{ input: string; output: string[] }[]>([{ input: "boot", output: ["STEVEN.OS v0.26", "Type ‘help’ to inspect the system."] }]);
-  const [value, setValue] = useState(""); const inputRef = useRef<HTMLInputElement>(null);
-  function submit(event: FormEvent) { event.preventDefault(); const command = value.trim().toLowerCase(); if (!command) return; if (command === "clear") setHistory([]); else if (command === "game") { setHistory((h) => [...h, { input: command, output: ["Opening TRAIN THE NPU…"] }]); onGame(); } else setHistory((h) => [...h, { input: command, output: terminalResponses[command] || [`COMMAND NOT FOUND: ${command}`, "Type ‘help’ for the command index."] }]); setValue(""); }
-  return <div className="terminal" onClick={() => inputRef.current?.focus()}>
-    <div className="terminal-bar"><span>STEVEN.OS</span><span>LOCAL / READ_ONLY</span></div>
-    <div className="terminal-screen" aria-live="polite">{history.map((entry, index) => <div className="terminal-entry" key={`${entry.input}-${index}`}><p><b>steven@mind:~$</b> {entry.input}</p>{entry.output.map((line, i) => <p className="terminal-output" key={i}>{line || " "}</p>)}</div>)}</div>
-    <form onSubmit={submit} className="terminal-form"><label htmlFor="terminal-input">steven@mind:~$</label><input id="terminal-input" ref={inputRef} value={value} onChange={(e) => setValue(e.target.value)} autoComplete="off" spellCheck={false} aria-label="Enter a Steven OS command" /></form>
+  const [value, setValue] = useState(""); const inputRef = useRef<HTMLInputElement>(null); const screenRef = useRef<HTMLDivElement>(null);
+  useEffect(() => { const screen = screenRef.current; if (screen) screen.scrollTop = screen.scrollHeight; }, [history]);
+  function run(raw: string) { const command = raw.trim().toLowerCase(); if (!command) return; if (command === "clear") setHistory([]); else if (command === "game") { setHistory((h) => [...h.slice(-29), { input: command, output: ["Opening TRAIN THE NPU…"] }]); onGame(); } else setHistory((h) => [...h.slice(-29), { input: command, output: terminalResponses[command] || [`COMMAND NOT FOUND: ${command}`, "Type ‘help’ or use the command buttons above."] }]); setValue(""); }
+  function submit(event: FormEvent) { event.preventDefault(); run(value); }
+  return <div className="terminal">
+    <div className="terminal-bar"><span>STEVEN.OS</span><span>INTERACTIVE GUIDE</span></div>
+    <div className="terminal-shortcuts"><p id="terminal-help">Choose a command below, or type one and press Enter.</p><div>{["about", "projects", "research", "skills", "help", "clear"].map(command => <button type="button" key={command} onClick={() => run(command)}>{command}</button>)}</div></div>
+    <div className="terminal-screen" ref={screenRef} role="log" aria-live="polite" aria-label="Command responses" tabIndex={0}>{history.map((entry, index) => <div className="terminal-entry" key={`${entry.input}-${index}`}><p><b>steven@mind:~$</b> {entry.input}</p>{entry.output.map((line, i) => <p className="terminal-output" key={i}>{line || " "}</p>)}</div>)}</div>
+    <form onSubmit={submit} className="terminal-form"><label htmlFor="terminal-input" aria-label="Command">&gt;</label><input id="terminal-input" ref={inputRef} value={value} onChange={(e) => setValue(e.target.value)} autoComplete="off" autoCapitalize="none" spellCheck={false} placeholder="Try help or projects…" aria-label="Enter a Steven OS command" aria-describedby="terminal-help" /><button type="submit" disabled={!value.trim()}>Run ↵</button></form>
   </div>;
 }
 
@@ -108,7 +111,7 @@ export default function Home() {
 
       <section className="skills"><div className="section-heading compact"><p className="section-index mono">08 / TOOLS & DOMAINS</p><h2>NO PERCENTAGES.<br />ONLY PRACTICE.</h2></div><div className="skill-groups">{toolGroups.map((group) => <div key={group.title}><h3 className="mono">{group.title}</h3>{group.items.map((item) => <span key={item}>{item}</span>)}</div>)}</div></section>
 
-      <section className="human" id="portrait"><div className="human-image"><img src="/steven-portrait.png" alt="Portrait of Steven" width="1086" height="1448" loading="lazy" decoding="async" /><span className="mono">STEVEN / STILL EXPLORING</span></div><div className="human-copy"><span className="portrait-eyebrow mono">THE HUMAN BEHIND THE SYSTEM</span><p>Behind the architectures,<br />models and experiments,<br />there&apos;s still a student learning how intelligence works.</p><span className="portrait-signature">Steven.</span></div></section>
+      <section className="human" id="portrait"><div className="human-image"><img src="/steven-suit-cutout.png" alt="Portrait of Steven wearing a black suit" width="1152" height="1368" loading="lazy" decoding="async" /><span className="mono">STEVEN / STILL EXPLORING</span></div><div className="human-copy"><span className="portrait-eyebrow mono">THE HUMAN BEHIND THE SYSTEM</span><p>Behind the architectures,<br />models and experiments,<br />there&apos;s still a student learning how intelligence works.</p><span className="portrait-signature">Steven.</span></div></section>
 
       <section className="future"><span className="future-label mono">09 / LONG-TERM VECTOR</span><h2>FUTURE</h2><div className="future-chain"><span>AI</span><i>↓</i><span>ARCHITECTURE</span><i>↓</i><span>SILICON</span><i>↓</i><span>INTELLIGENCE</span></div><p>My goal is not simply to follow where computing is going.<br /><strong>I want to help build what comes next.</strong></p></section>
 
