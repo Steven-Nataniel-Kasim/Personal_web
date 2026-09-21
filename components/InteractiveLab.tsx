@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type PointerEvent } from "react";
 
-export function RobotCompanion() {
+export function HeroPortrait() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches) return;
@@ -10,13 +10,13 @@ export function RobotCompanion() {
       const box = node.getBoundingClientRect();
       const x = Math.max(-1, Math.min(1, (event.clientX - box.left - box.width / 2) / (innerWidth / 2)));
       const y = Math.max(-1, Math.min(1, (event.clientY - box.top - box.height / 2) / (innerHeight / 2)));
-      node.style.setProperty("--look-x", `${x * 15}deg`);
-      node.style.setProperty("--look-y", `${-y * 10}deg`);
+      node.style.setProperty("--portrait-x", `${x * 8}px`);
+      node.style.setProperty("--portrait-y", `${y * 5}px`);
     };
     window.addEventListener("pointermove", move, { passive:true });
     return () => window.removeEventListener("pointermove", move);
   }, []);
-  return <div className="robot-companion" ref={ref}><div className="robot-orbit"/><img src="/robot-companion.png" alt="Lucia, a white ceramic robot with a black visor" width="1024" height="1024" fetchPriority="high"/><div className="robot-caption"><span>● LUCIA / ONLINE</span><small>Curious about what you’re building.</small></div></div>;
+  return <div className="hero-portrait" ref={ref}><span className="portrait-backtype" aria-hidden="true">S.</span><img src="/steven-suit-cutout.png" alt="Steven wearing a black suit" width="1152" height="1368" fetchPriority="high"/><span className="hero-portrait-label mono">STEVEN / INFORMATICS × INTELLIGENCE</span></div>;
 }
 
 export function Lanyard() {

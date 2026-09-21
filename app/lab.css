@@ -1,3 +1,12 @@
+.hero-portrait-stage { position:absolute; right:2%; bottom:100px; width:48%; height:76%; z-index:0; }
+.hero-portrait { position:relative; width:100%; height:100%; }
+.hero-portrait img { position:absolute; bottom:0; width:100%; height:100%; object-fit:contain; object-position:center bottom; filter:grayscale(1) contrast(1.08); mask-image:linear-gradient(to bottom,#000 75%,transparent 100%); transform:translate(var(--portrait-x,0px),var(--portrait-y,0px)); transition:transform .45s ease-out; }
+.portrait-backtype { position:absolute; right:0; bottom:4%; font:bold clamp(200px,38vw,600px)/1 Arial,sans-serif; color:#ffffff04; letter-spacing:-.1em; }
+.hero-portrait-label { position:absolute; bottom:14px; right:12%; font-size:10px; letter-spacing:.15em; color:#9da2a5; }
+.timeline-row.timeline-next { opacity:.75; }
+.timeline-row.timeline-future { opacity:.65; }
+@media(max-width:620px) { .hero-portrait-stage { top:435px; bottom:auto; height:450px; width:94%; right:-3%; } .hero-portrait-label { bottom:0; right:12%; font-size:9px; } }
+@media(prefers-reduced-motion:reduce) { .hero-portrait img { transform:none; transition:none; } }
 .identity-badge.identity-badge-photo { height:360px; padding:18px 22px; }
 .badge-photo { height:143px; margin:12px 0; overflow:hidden; background:#b6bdbe; border:1px solid #a1aaac; }
 .badge-photo img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 25%; filter:grayscale(1) contrast(1.08); pointer-events:none; }

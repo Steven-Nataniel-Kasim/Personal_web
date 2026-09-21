@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState, type CSSProperties } from "react";
 import { mapNodes, nowItems, projects, timeline, toolGroups } from "@/data/portfolio";
-import { RobotCompanion, Lanyard, ResearchExplorer } from "@/components/InteractiveLab";
+import { HeroPortrait, Lanyard, ResearchExplorer } from "@/components/InteractiveLab";
 
 const progression = ["Software", "AI models", "Edge computing", "Computer architecture", "Silicon", "Biological intelligence"];
 
@@ -88,7 +88,7 @@ export default function Home() {
       <section className="hero" id="top">
         <div className="hero-kicker mono"><span className="live-dot" /> AN INDEPENDENT EXPLORATION OF INTELLIGENCE</div>
         <div className="hero-copy"><p className="hero-overline">Steven / Informatics student</p><h1>Software.<br /><span>Silicon.</span><br /><em>Something more.</em></h1><p className="hero-thesis">Building intelligence from the ground up.</p><a className="hero-action" href="#work">Explore my experiments <span>↗</span></a></div>
-        <div className="core-stage robot-stage"><RobotCompanion /></div>
+        <div className="hero-portrait-stage"><HeroPortrait /></div>
         <div className="hero-bottom"><p>AI & machine learning<br />Hardware & architecture<br />Biological intelligence</p><span className="mono">A WORK IN PROGRESS.<br />BY DESIGN.</span><a className="scroll-cue mono" href="#manifesto">ENTER THE SYSTEM <span>↓</span></a></div>
       </section>
 
@@ -104,7 +104,7 @@ export default function Home() {
 
       <section className="now section-shell"><div><p className="section-index mono">06 / LIVE STATE</p><h2>NOW</h2><p>Currently exploring. Maintained as a single, editable system state.</p></div><ol>{nowItems.map((item, index) => <li key={item}><span className="mono">0{index + 1}</span><strong>{item}</strong><i>→</i></li>)}</ol></section>
 
-      <section className="log section-shell"><div><p className="section-index mono">07 / TRAJECTORY</p><h2>ENGINEERING<br />LOG</h2><p>Past → present → future. A direction of travel, not a list of claims.</p></div><div className="timeline">{timeline.map(([year, item, state], index) => <div className={`timeline-row ${state}`} key={`${year}-${item}`}><span className="mono">{year}</span><strong>{item}</strong><i className="mono">{index < 1 ? "PAST" : index < 5 ? "NOW" : "VECTOR"}</i></div>)}</div></section>
+      <section className="log section-shell"><div><p className="section-index mono">07 / TRAJECTORY</p><h2>ENGINEERING<br />LOG</h2><p>Past → present → future. A direction of travel, not a list of claims.</p></div><div className="timeline">{timeline.map(([year, item, state], index) => <div className={`timeline-row timeline-${state}`} key={`${year}-${item}`}><span className="mono">{year}</span><strong>{item}</strong><i className="mono">{index < 1 ? "PAST" : index < 5 ? "NOW" : "VECTOR"}</i></div>)}</div></section>
 
       <section className="skills"><div className="section-heading compact"><p className="section-index mono">08 / TOOLS & DOMAINS</p><h2>NO PERCENTAGES.<br />ONLY PRACTICE.</h2></div><div className="skill-groups">{toolGroups.map((group) => <div key={group.title}><h3 className="mono">{group.title}</h3>{group.items.map((item) => <span key={item}>{item}</span>)}</div>)}</div></section>
 
