@@ -17,7 +17,7 @@ const terminalResponses: Record<string, string[]> = {
   semiconductor: ["SEMICONDUCTOR", "A long-term direction. Learning the fundamentals before making claims."],
   neuroscience: ["BIOLOGICAL INTELLIGENCE", "Exploring neural systems for principles that may inform better computational architectures."],
   future: ["VECTOR", "AI × Computer Architecture × Semiconductor × Neuroscience"],
-  contact: ["CONTACT CHANNELS", "GitHub / LinkedIn / Email / Research profiles", "Links are placeholders until Steven provides them."],
+  contact: ["CONTACT CHANNELS", "LinkedIn / Instagram", "Find Steven through the links below."],
   secret: ["THE SYSTEM IS NOT FINISHED.", "THAT IS THE POINT.", "Try: game"],
 };
 
@@ -115,7 +115,7 @@ export default function Home() {
 
       <section className="future"><span className="future-label mono">09 / LONG-TERM VECTOR</span><h2>FUTURE</h2><div className="future-chain"><span>AI</span><i>↓</i><span>ARCHITECTURE</span><i>↓</i><span>SILICON</span><i>↓</i><span>INTELLIGENCE</span></div><p>My goal is not simply to follow where computing is going.<br /><strong>I want to help build what comes next.</strong></p></section>
 
-      <section className="contact" id="contact"><p className="section-index mono">10 / CONTACT</p><h2>LET&apos;S BUILD<br />SOMETHING<br /><em>INTERESTING.</em></h2><div className="contact-links"><a href="#" onClick={(e) => e.preventDefault()}>GitHub <span>PLACEHOLDER ↗</span></a><a href="#" onClick={(e) => e.preventDefault()}>LinkedIn <span>PLACEHOLDER ↗</span></a><a href="#" onClick={(e) => e.preventDefault()}>Email <span>PLACEHOLDER ↗</span></a><a href="#" onClick={(e) => e.preventDefault()}>Research Profiles <span>PLACEHOLDER ↗</span></a></div></section>
+      <section className="contact" id="contact"><p className="section-index mono">10 / CONTACT</p><h2>LET&apos;S BUILD<br />SOMETHING<br /><em>INTERESTING.</em></h2><div className="contact-links"><a href="https://www.linkedin.com/in/steven-nataniel-kasim-7b9272330" target="_blank" rel="noreferrer">LinkedIn <span>CONNECT ↗</span></a><a href="https://www.instagram.com/steven__.n" target="_blank" rel="noreferrer">Instagram <span>FOLLOW ↗</span></a></div></section>
 
       <footer><div><b>STEVEN</b><span>INFORMATICS × AI × SILICON</span></div><div className="mono"><span>SYSTEM STATUS: LEARNING</span><LocalTime /><span>BUILD: 2026</span></div><p>Designed as an evolving system.</p><button className="chip-secret" onClick={() => setGameOpen(true)} aria-label="Open hidden Train the NPU game">▦</button></footer>
     </main>
