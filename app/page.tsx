@@ -108,7 +108,7 @@ export default function Home() {
 
       <section className="skills"><div className="section-heading compact"><p className="section-index mono">08 / TOOLS & DOMAINS</p><h2>NO PERCENTAGES.<br />ONLY PRACTICE.</h2></div><div className="skill-groups">{toolGroups.map((group) => <div key={group.title}><h3 className="mono">{group.title}</h3>{group.items.map((item) => <span key={item}>{item}</span>)}</div>)}</div></section>
 
-      <section className="human"><div className="human-image" role="img" aria-label="Reserved space for a large monochrome portrait of Steven"><span className="mono">HUMAN_01 / PORTRAIT PLACEHOLDER</span><b>S</b></div><Reveal className="human-copy"><p>Behind the architectures,<br />models and experiments,<br />there&apos;s still a student learning how intelligence works.</p></Reveal></section>
+      <section className="human" id="portrait"><div className="human-image"><img src="/steven-portrait.png" alt="Portrait of Steven" width="1086" height="1448" loading="lazy" decoding="async" /><span className="mono">STEVEN / STILL EXPLORING</span></div><div className="human-copy"><span className="portrait-eyebrow mono">THE HUMAN BEHIND THE SYSTEM</span><p>Behind the architectures,<br />models and experiments,<br />there&apos;s still a student learning how intelligence works.</p><span className="portrait-signature">Steven.</span></div></section>
 
       <section className="future"><span className="future-label mono">09 / LONG-TERM VECTOR</span><h2>FUTURE</h2><div className="future-chain"><span>AI</span><i>↓</i><span>ARCHITECTURE</span><i>↓</i><span>SILICON</span><i>↓</i><span>INTELLIGENCE</span></div><p>My goal is not simply to follow where computing is going.<br /><strong>I want to help build what comes next.</strong></p></section>
 
